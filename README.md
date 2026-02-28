@@ -7,7 +7,7 @@ This project implements a complete conversational AI pipeline. The system is des
 🚀 Tech Stack
 
  * Speech-to-Text (STT): OpenAI Whisper (Robust multilingual transcription).
- * Large Language Model (LLM): Google Gemini 2.0 Flash (Contextual reasoning and intent processing).
+ * Large Language Model (LLM): Google Gemma-3-27b-it (Contextual reasoning and intent processing).
  * Text-to-Speech (TTS): Google gTTS (Neural speech synthesis).
  * Environment: Python 3.x / Google Colab.
    
@@ -18,7 +18,7 @@ During development, the project faced several infrastructure and integration cha
 | Technical Challenge | Root Cause | Engineering Solution |
 |---|---|---|
 | API Rate Limiting (429) | Exceeded OpenAI's free tier quota/credits. | Failover Strategy: Switched the core LLM engine to Google Gemini API for higher throughput. |
-| Model Endpoint 404 | Deprecated model versions or restricted access to legacy endpoints (gemini-1.5-flash). | Model Auditing: Performed list_models() and updated the pipeline to use the gemini-2.0-flash stable release. |
+| Model Endpoint 404 | Deprecated model versions or restricted access to legacy endpoints (gemini-1.5-flash). | Model Auditing: Performed list_models() and updated the pipeline to use the Google Gemma-3-27b-it  stable release. |
 | Environment Dependency | ModuleNotFoundError for the gTTS library in the cloud runtime. | Dynamic Provisioning: Implemented automated package installation using !pip install gTTS in the deployment script. |
 | Quota Exhaustion (Gemini) | Per-minute token limits on the Gemini Free Tier. | Resilience Logic: Developed a Retry/Backoff algorithm with a 35-second cooldown to ensure system availability. |
 
